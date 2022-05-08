@@ -12,7 +12,9 @@ services:
     ports:
       - '8080:8080'
     networks:
-      - the_net
+        the_net:
+            aliases:
+                - sparkd
       
 networks:
   the_net:

@@ -22,7 +22,6 @@ df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
 
 query = df \
     .writeStream \
-    .outputMode("update") \
     .format("console") \
     .start()
 

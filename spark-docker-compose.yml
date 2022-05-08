@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   spark-demo:
@@ -11,3 +11,10 @@ services:
       - SPARK_SSL_ENABLED=no
     ports:
       - '8080:8080'
+    networks:
+        the_net:
+            aliases:
+                - sparkd
+      
+networks:
+  the_net:

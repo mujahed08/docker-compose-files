@@ -7,6 +7,10 @@ services:
       - '2181:2181'
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
+    networks:
+        the_net:
+            aliases:
+                - zookeeperw
   kafkaw:
     image: 'bitnami/kafka:latest'
     ports:

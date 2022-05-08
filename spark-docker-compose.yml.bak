@@ -19,7 +19,7 @@ services:
       - KAFKA_BROKER_ID=1
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
       - KAFKA_CFG_LISTENERS=CLIENT://:9092,EXTERNAL://:9093
-      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:9092,EXTERNAL://localhost:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafkad:9092,EXTERNAL://localhost:9093
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeperw:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
@@ -47,6 +47,8 @@ services:
                 - sparkd
     volumes:
       - ./pykafkastream:/opt/code/pykafkastream
+      - ./jars_dir:/opt/bitnami/spark/ivy:z
+      - ./conf:/opt/bitnami/spark/conf
       
 networks:
   the_net:

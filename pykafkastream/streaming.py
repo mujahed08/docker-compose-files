@@ -13,7 +13,7 @@ spark = SparkSession \
 df = spark \
     .readStream \
     .format("kafka") \
-    .option("kafka.bootstrap.servers", "kafkad:9093") \
+    .option("kafka.bootstrap.servers", "kafkad:9092") \
     .option("subscribe", "T.LEARNER_FILES.EVENT") \
     .option("startingOffsets", "earliest") \
     .load()

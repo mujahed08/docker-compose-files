@@ -39,6 +39,7 @@ services:
       - SPARK_SSL_ENABLED=no
     ports:
       - '8080:8080'
+      - '4040:4040'
     depends_on:
       - kafkaw
     networks:
@@ -47,6 +48,8 @@ services:
                 - sparkd
     volumes:
       - ./pykafkastream:/opt/code/pykafkastream
+      - ./jars_dir:/opt/bitnami/spark/ivy:z
+      - ./conf:/opt/bitnami/spark/conf
       
 networks:
   the_net:

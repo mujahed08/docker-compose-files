@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  mongo:
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb_data:/data/db
+
+  mongo-express:
+    image: mongo-express
+    ports:
+      - "8024:8024"
+    environment:
+      - ME_CONFIG_MONGODB_URL=mongodb://root:example@mongo:27017
+      - VCAP_APP_PORT=8024
+    links:
+      - mongo
+    depends_on:
+      - mongo
+
+volumes:
+  mongodb_data:

@@ -1,0 +1,17 @@
+db:
+  image: mysql:latest
+  environment:
+    MYSQL_ROOT_PASSWORD: rxpad
+    MYSQL_DATABASE: rxproj
+    MYSQL_USER: example_db_user
+    MYSQL_PASSWORD: example_db_pass
+#  ports:
+#    - "3306:3306"
+
+web:
+  image: tomcat:latest
+  # Environment variables do not appear to be getting loaded the first time Tomcat starts!
+  ports:
+   - "80:8080"
+  volumes:
+   - ./tomcat/webapps:/usr/local/tomcat/webapps
